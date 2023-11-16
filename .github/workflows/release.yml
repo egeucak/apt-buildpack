@@ -30,6 +30,11 @@ jobs:
                 PACKAGE="${REPO}/$(echo "$BP_ID" | sed 's/\//_/g')"
                 pack buildpack package --publish ${PACKAGE}:${VERSION}
                 DIGEST="$(crane digest ${PACKAGE}:${VERSION})"
+                echo "BP_ID: $BP_ID"
+                echo "VERSION: $VERSION"
+                echo "PACKAGE: $PACKAGE"
+                echo "DIGEST: $DIGEST"
+                echo "Address: ${PACKAGE}@${DIGEST}"
                 echo "::set-output name=bp_id::$BP_ID"
                 echo "::set-output name=version::$VERSION"
                 echo "::set-output name=address::${PACKAGE}@${DIGEST}"
